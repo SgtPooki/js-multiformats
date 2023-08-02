@@ -1,10 +1,6 @@
-/**
- * @template T
- * @typedef {import('./interface.js').ByteView<T>} ByteView
- */
-export const name: "raw";
-export const code: 85;
-export function encode(node: Uint8Array): ByteView<Uint8Array>;
-export function decode(data: ByteView<Uint8Array>): Uint8Array;
-export type ByteView<T> = import('./interface.js').ByteView<T>;
+import type { ByteView } from './interface.js';
+export declare const name = "raw";
+export declare const code = 85;
+export declare function encode(node: Uint8Array): ByteView<Uint8Array>;
+export declare function decode(data: ByteView<Uint8Array>): Uint8Array;
 //# sourceMappingURL=raw.d.ts.map

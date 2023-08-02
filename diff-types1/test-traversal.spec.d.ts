@@ -1,2 +1,2 @@
-export type CID = import('../src/cid.js').CID;
+export {};
 //# sourceMappingURL=test-traversal.spec.d.ts.map

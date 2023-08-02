@@ -1,6 +1,6 @@
-export const name: "json";
-export const code: 512;
-export function encode<T>(node: T): import("./interface.js").ByteView<T>;
-export function decode<T>(data: import("./interface.js").ByteView<T>): T;
-export type ByteView<T> = import('./interface.js').ByteView<T>;
+import type { ByteView } from './interface.js';
+export declare const name = "json";
+export declare const code = 512;
+export declare function encode<T>(node: T): ByteView<T>;
+export declare function decode<T>(data: ByteView<T>): T;
 //# sourceMappingURL=json.d.ts.map

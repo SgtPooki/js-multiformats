@@ -1,4 +1,7 @@
-export function from<Name extends string, Code extends number>({ name, code, encode }: {
+import * as Digest from './digest.js';
+import type { MultihashHasher } from './interface.js';
+type Await<T> = Promise<T> | T;
+export declare function from<Name extends string, Code extends number>({ name, code, encode }: {
     name: Name;
     code: Code;
     encode: (input: Uint8Array) => Await<Uint8Array>;
@@ -6,30 +9,13 @@ export function from<Name extends string, Code extends number>({ name, code, enc
 /**
  * Hasher represents a hashing algorithm implementation that produces as
  * `MultihashDigest`.
- *
- * @template {string} Name
- * @template {number} Code
- * @class
- * @implements {MultihashHasher<Code>}
  */
-export class Hasher<Name extends string, Code extends number> implements MultihashHasher<Code> {
-    /**
-     *
-     * @param {Name} name
-     * @param {Code} code
-     * @param {(input: Uint8Array) => Await<Uint8Array>} encode
-     */
+export declare class Hasher<Name extends string, Code extends number> implements MultihashHasher<Code> {
+    readonly name: Name;
+    readonly code: Code;
+    readonly encode: (input: Uint8Array) => Await<Uint8Array>;
     constructor(name: Name, code: Code, encode: (input: Uint8Array) => Await<Uint8Array>);
-    name: Name;
-    code: Code;
-    encode: (input: Uint8Array) => Await<Uint8Array>;
-    /**
-     * @param {Uint8Array} input
-     * @returns {Await<Digest.Digest<Code, number>>}
-     */
     digest(input: Uint8Array): Await<Digest.Digest<Code, number>>;
 }
-export type MultihashHasher<Alg extends number> = import('./interface.js').MultihashHasher;
-export type Await<T> = Promise<T> | T;
-import * as Digest from "./digest.js";
+export {};
 //# sourceMappingURL=hasher.d.ts.map

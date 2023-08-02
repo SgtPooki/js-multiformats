@@ -1,19 +1,7 @@
-import { CID } from "./index.js";
-import { hasher } from "./index.js";
-import { digest } from "./index.js";
-import { varint } from "./index.js";
-import { bytes } from "./index.js";
-export const hashes: {
-    identity: {
-        code: number;
-        name: string;
-        encode: (input: Uint8Array) => Uint8Array;
-        digest: (input: Uint8Array) => digest.Digest<0, number>;
-    };
-    sha256: hasher.Hasher<"sha2-256", 18>;
-    sha512: hasher.Hasher<"sha2-512", 19>;
-};
-export const bases: {
+import * as raw from './codecs/raw.js';
+import * as json from './codecs/json.js';
+import { CID, hasher, digest, varint, bytes } from './index.js';
+declare const bases: {
     base256emoji: import("./bases/base.js").Codec<"base256emoji", "🚀">;
     base64: import("./bases/base.js").Codec<"base64", "m">;
     base64pad: import("./bases/base.js").Codec<"base64pad", "M">;
@@ -39,11 +27,19 @@ export const bases: {
     base2: import("./bases/base.js").Codec<"base2", "0">;
     identity: import("./bases/base.js").Codec<"identity", "\0">;
 };
-export namespace codecs {
-    export { raw };
-    export { json };
-}
-import * as raw from "./codecs/raw.js";
-import * as json from "./codecs/json.js";
-export { CID, hasher, digest, varint, bytes };
+declare const hashes: {
+    identity: {
+        code: number;
+        name: string;
+        encode: (input: Uint8Array) => Uint8Array;
+        digest: (input: Uint8Array) => digest.Digest<0, number>;
+    };
+    sha256: hasher.Hasher<"sha2-256", 18>;
+    sha512: hasher.Hasher<"sha2-512", 19>;
+};
+declare const codecs: {
+    raw: typeof raw;
+    json: typeof json;
+};
+export { CID, hasher, digest, varint, bytes, hashes, bases, codecs };
 //# sourceMappingURL=basics.d.ts.map
